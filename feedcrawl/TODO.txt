@@ -1,0 +1,6 @@
+parallelize the fetches using multi process
+better error detection and logging around crawl
+
+
+build a simple search interface on the feeds
+category for feeds

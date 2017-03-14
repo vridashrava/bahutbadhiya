@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Startup, stealth, machine learning and deep learning to make sense of the deluge of information we get bombarded with daily">
+    <title>Driving Intelligence at scale</title>
+    <link rel="stylesheet" type="text/css" href="vendors/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/style.css">
+    <link rel="stylesheet" type="text/css" href="vendors/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/queries.css">
+    <link rel=stylesheet type="text/css" href="vendors/css/ionicons.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,300i" rel="stylesheet">
+    <?include('resources/php/processform.php');?>
+    
+    <link rel="icon" href="resources/img/favicon.ico">
+</head>
+
+<body>
+<header>
+    <nav>
+        <div class="row">
+            <div class="span-1-of-4 box1">
+                BahutBadhiya
+            </div>
+            <ul class="main-nav">
+                    <li><a href="#">About US</a></li>
+                    <li><a href="#">Sign up</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="bblabs-textbox">
+        <h1>Information as you Wanted</h1>
+        <p>Using algorithmic intelligence to get you more relevant stuff</p>
+    </div>
+</header>
+    
+<section class="about-us">
+    <div class="row">
+        <h2>About Us</h2>
+        <p class="long-copy">
+            We are a stealth mode startup based out of Bangalore, India; dabbling in algorithmic learning to make sense of the deluge of information that each one of us is bombarded with everyday.   
+        Prior to this members of the founding team have successfully built large scale intelligent systems at companies like Flipkart and Kosmix (WalmartLabs)
+        </p>
+    </div>
+</section>
+
+
+<section class="section-contact form-input">
+    <div class="row">
+        <h2>Sign up for launch!</h2>
+    </div>
+    <div class="row">
+        <form method="post" action="#" class="contact-form" name="form-signup">
+                <div class="form-email col span-2-of-3">
+                    <input type="email" name="email" id="email" placeholder="youremail@abc.com" required>
+                </div>
+                <div class="form-submit col span-1-of-3">
+                    <input type="submit" value="Sign up!"  onclick="ValidateEmail(document.form-signup.email)">
+                </div>
+                <div class="col span-2-of-3 error-notification"><?=$ERROR_MESSAGE;?></div>
+        </form>
+    </div>
+</section>
+<section class="section-contact form-submitted">
+    <div class="row">
+        <h2>Thank You for Signing Up!</h2>
+        <p>We'll let you know when we are ready for a preview.</p>
+    </div>
+</section>
+
+    <script src="https://cdn.jsdelivr.net/g/respond@1.4.2,html5shiv@3.7.3,selectivizr@1.0.3b"></script>
+    <script src="resources/js/validate.js"></script>
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-1129867-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+</body>
+</html>

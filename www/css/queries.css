@@ -1,0 +1,68 @@
+
+/* big tablets to screens smaller than 1140px row  */
+@media only screen and (max-width: 1200px) {
+    .row {padding: 0 2%;}
+    
+    .bblabs-textbox {
+        width: 100%;
+        padding: 0 2%;
+    }
+}
+
+/* Small tablets to large tablets */
+@media only screen and (max-width: 1023px) {
+    body {font-size: 18px;}
+    
+    section {padding: 60px 0;}
+    
+    .long-copy {
+        width: 90%;
+        margin-left: 5%;
+    }
+    
+    .contact-form {width: 90%;}
+}
+
+/* Small phones to small tablets (481px to 767px) */
+@media only screen and (max-width: 767px) {
+    body {font-size: 16px;}
+    section {padding: 30px 0;}
+    
+    .row,
+    .bblabs-textbox {
+        padding: 0 4%;
+    }
+    
+    .main-nav {display: none;}
+    .col {
+        width: 100%;
+        margin: 0% 0 4% 0%;
+        text-align: center;
+    }
+
+    h1 {font-size: 180%;}
+    h2 {font-size: 150%;}
+    
+    .long-copy {
+        width: 100%;
+        margin-left: 0%;
+    }
+    
+    input {
+        margin-bottom: 10px;
+    }
+ 
+    input[type=email] {
+        width: 90%;
+        padding: 7px;
+        float: none;
+    }
+    
+}
+
+
+/* Small phones like older iphone */
+@media only screen and (max-width: 480px) {
+    .contact-form {width: 100%;}
+    section {padding: 10px 0;}
+}
