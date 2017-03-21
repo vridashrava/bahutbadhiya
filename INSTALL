@@ -1,0 +1,18 @@
+#Linux Package Manager
+apt-get update
+apt-get install sudo
+
+#Python package manager
+#wget https://bootstrap.pypa.io/get-pip.py
+#sudo python get-pip.py
+sudo apt-get install python-pip
+
+#Install python-mysql
+sudo apt-get install python-mysqldb
+sudo apt-get install python-mysqldb
+
+#Install Python Requests
+sudo pip install requests
+
+sudo pip install feedparser
+sudo pip install python-dateutil
