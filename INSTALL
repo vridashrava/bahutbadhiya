@@ -16,3 +16,17 @@ sudo pip install requests
 
 sudo pip install feedparser
 sudo pip install python-dateutil
+
+
+#Initialize MySQL
+remove localhost binding from /etc/mysql/my.cnf
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('pwd');
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
+FLUSH PRIVILEGES;
+
+CREATE USER 'bbadmin' IDENTIFIED BY 'modi is great';
+CREATE DATABASE bahutbadhiya;
+GRANT ALL PRIVILEGES ON bahutbadhiya.* TO 'bbadmin'@'%';
+
+CREATE USER 'bbweb' IDENTIFIED BY 'modi is great';
+GRANT SELECT ON bahutbadhiya.* TO 'bbweb'@'%';
