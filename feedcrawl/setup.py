@@ -48,7 +48,7 @@ def initialise_db(db):
                             title TEXT,
                             description TEXT,
                             pubdate DATETIME,
-                            crawldate DATETIME DEFAULT NOW(),
+                            crawldate DATETIME,
                             PRIMARY KEY (urlchecksum))"""
     
     reset_tables(db, 'articles', SQL_DROP_ARTICLES, SQL_CREATE_ARTICLES)
