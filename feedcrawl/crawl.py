@@ -65,7 +65,7 @@ class FeedCrawler(object):
 
     def generate_feedlist(self):
 
-        SQL = "SELECT url, urlchecksum, id, fetchfailures, parsefailures from feeds where nextcrawl < \'%s\' and fetchfailures < 3" % (datetime.datetime.now()) 
+        SQL = "SELECT url, urlchecksum, id, fetchfailures, parsefailures from feeds where nextcrawl < \'%s\' and fetchfailures < 3 and parsefailures < 3" % (datetime.datetime.now()) 
        
         try:
              self.feeds = self.db.results(SQL)
