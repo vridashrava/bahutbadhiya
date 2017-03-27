@@ -1,4 +1,4 @@
-<?
+<?php
 class DB {
     #private $servername = "localhost";
     #private $username = "vichaark_signup";

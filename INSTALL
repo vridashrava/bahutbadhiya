@@ -30,3 +30,9 @@ GRANT ALL PRIVILEGES ON bahutbadhiya.* TO 'bbadmin'@'%';
 
 CREATE USER 'bbweb' IDENTIFIED BY 'modi is great';
 GRANT SELECT ON bahutbadhiya.* TO 'bbweb'@'%';
+
+
+#PHP
+sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt
+sudo nano /etc/apache2/mods-enabled/dir.conf (move index.php to front)
+sudo service apache2 restart
