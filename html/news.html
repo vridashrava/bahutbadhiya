@@ -29,7 +29,7 @@
       var hitTemplate = Handlebars.compile($("#results-template").html());
       $(document).ready(function(){
         $("#rs").empty();
-        $.getJSON("http://bahutbadhiya.com/resources/php/news.php", function(result){
+        $.getJSON("resources/php/news.php", function(result){
           for (var i = 0; i < result.response.docs.length; i++) {
             $("#rs").append(hitTemplate({title: result.response.docs[i].title, pubdate: result.response.docs[i].pubdate, url: result.response.docs[i].url, description: result.response.docs[i].description}));
           }

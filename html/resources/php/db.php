@@ -1,9 +1,15 @@
 <?
 class DB {
+    #private $servername = "localhost";
+    #private $username = "vichaark_signup";
+    #private $password = "modi is great";
+    #private $dbname = "vichaark_bblabs";
+
     private $servername = "localhost";
-    private $username = "vichaark_signup";
+    private $username = "bbweb";
     private $password = "modi is great";
-    private $dbname = "vichaark_bblabs";
+    private $dbname = "bahutbadhiya";
+
     private $conn = NULL;
     private $ERROR = FALSE;
     private $ERROR_MESSAGE = "";
