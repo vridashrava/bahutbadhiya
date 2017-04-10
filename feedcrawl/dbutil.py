@@ -14,7 +14,7 @@ class DB:
     def connect(self):
         # Open database connection
         #self.conn = MySQLdb.connect(host="69.89.31.164",user="vichaark_bbadmin",passwd="modi is great",db="vichaark_bblabs", charset='utf8')
-        self.conn = MySQLdb.connect(host="crawler.bahutbadhiya.com",user="bbadmin",passwd="modi is great",db="bahutbadhiya", charset='utf8')
+        self.conn = MySQLdb.connect(host="localhost",user="bbadmin",passwd="modi is great",db="bahutbadhiya", charset='utf8')
         self.conn.autocommit(True)
         return self.conn
 
