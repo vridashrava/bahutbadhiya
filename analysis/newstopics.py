@@ -37,16 +37,10 @@ class News(object):
             return  u'Number of Articles in Last 3 days == %s' % len(self.articles)
         else:
             print 'No articles fetched'
-            
-    def descriptions(self):
-        return self.descriptions
-    
-    def titles(self):
-        return self.titles
 
 
 
-class TopicsModel(object):
+class Topics(object):
     def __init__(self, data):
         #stats
         self.analysetime = 0
@@ -110,18 +104,11 @@ if __name__ == "__main__":
 
     # Sample data
     dataset = fetch_20newsgroups(shuffle=True, random_state=1, remove=('headers', 'footers', 'quotes'))
-    
     documents = dataset.data
-    t = news.titles()
-    if (t is not None):
-        documents = t
-    else:
-        print "Titles were None"
     
-    for t in documents:
-        print t
+    documents = news.titles
         
-    t = TopicsModel(documents)
+    t = Topics(documents)
     t.analyse(False)
     t.display()
     
