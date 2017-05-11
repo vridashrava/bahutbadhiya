@@ -11,6 +11,8 @@ def display_topics(model, feature_names, no_top_words):
 dataset = fetch_20newsgroups(shuffle=True, random_state=1, remove=('headers', 'footers', 'quotes'))
 documents = dataset.data
 
+#print documents[:5]
+
 no_features = 1000
 
 # NMF is able to use tf-idf
