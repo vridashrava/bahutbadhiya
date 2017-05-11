@@ -1,4 +1,4 @@
-import dbutil
+#from bahutbadhiya.lib import dbutil
 import logging
 import datetime
 import requests
@@ -6,7 +6,7 @@ import feedparser
 import md5
 from multiprocessing import Pool
 from dateutil.parser import parse
-from dbutil import DB
+from bahutbadhiya.lib.dbutil import DB
 from timer import Timer
 
 #TODO: use decorators for timing

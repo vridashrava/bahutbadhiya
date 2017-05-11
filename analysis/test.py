@@ -23,7 +23,7 @@ tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, max_features=no_features,
 tf = tf_vectorizer.fit_transform(documents)
 tf_feature_names = tf_vectorizer.get_feature_names()
 
-no_topics = 20
+no_topics = 10
 
 # Run NMF
 nmf = NMF(n_components=no_topics, random_state=1, alpha=.1, l1_ratio=.5, init='nndsvd').fit(tfidf)
