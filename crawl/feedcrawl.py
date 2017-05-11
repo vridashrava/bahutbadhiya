@@ -7,7 +7,7 @@ import md5
 from multiprocessing import Pool
 from dateutil.parser import parse
 from bahutbadhiya.lib.dbutil import DB
-from timer import Timer
+from bahutbadhiya.lib.timer import Timer
 
 #TODO: use decorators for timing
 

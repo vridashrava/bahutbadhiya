@@ -1,4 +1,4 @@
-from dbutil import DB
+from bahutbadhiya.lib.dbutil import DB
 import logging 
 import datetime
 
