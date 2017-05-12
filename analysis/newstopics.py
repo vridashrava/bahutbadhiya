@@ -7,6 +7,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.datasets import fetch_20newsgroups
 from sklearn.decomposition import NMF, LatentDirichletAllocation
 
+import sys
+
 
 class News(object):
     def __init__ (self):
@@ -56,8 +58,9 @@ class Topics(object):
         #display params
         self.numtopwords = 10
 
-    def analyse(self, isLDA = True):
+    def analyse(self, isLDA = True, numTopics = 10):
         self.timer.reset()
+        self.numtopics = numTopics
         
         if (isLDA):
             # LDA can only use raw term counts, is a probabilistics
@@ -92,6 +95,8 @@ class Topics(object):
         print "Total time taken : %s seconds" % (self.analysetime)
 
 
+def str2bool(v):
+  return v.lower() in ("yes", "true", "t", "1")
 
 if __name__ == "__main__":
 
@@ -106,9 +111,24 @@ if __name__ == "__main__":
     dataset = fetch_20newsgroups(shuffle=True, random_state=1, remove=('headers', 'footers', 'quotes'))
     documents = dataset.data
     
+    useLDA = True
+    numTopics = 20
+    
+    if (len(sys.argv) > 1):
+        numTopics = int(sys.argv[1])
+        
+        if (len(sys.argv) > 2): 
+            useLDA = str2bool(sys.argv[2])
+    
     documents = news.titles
+    
+    print "Going to analyse %s topics." % (numTopics)
+    if (useLDA): 
+        print "Using the Latent Dirichlet Allocation Model"
+    else:
+        print "Using the Non-negative matrix factorization Model"
         
     t = Topics(documents)
-    t.analyse(False)
+    t.analyse(useLDA, numTopics)
     t.display()
     
