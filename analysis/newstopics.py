@@ -6,6 +6,7 @@ from bahutbadhiya.lib.timer import Timer
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.datasets import fetch_20newsgroups
 from sklearn.decomposition import NMF, LatentDirichletAllocation
+import numpy as np
 
 import sys
 
@@ -66,16 +67,27 @@ class Topics(object):
             # LDA can only use raw term counts, is a probabilistics
             # graphical model
             tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, max_features=self.numfeatures, stop_words='english')
-            tf = tf_vectorizer.fit_transform(documents)
+            tf = tf_vectorizer.fit_transform(self.data)
             self.featurenames = tf_vectorizer.get_feature_names()
             
             #RUN
             self.model = LatentDirichletAllocation(n_topics=self.numtopics, max_iter=5, learning_method='online', learning_offset=50.,random_state=0).fit(tf)
             
+            # predict topics for test data
+            # unnormalized doc-topic distribution
+            doc_topic_dist_unnormalized = np.matrix(self.model.transform(tf))
+
+            # normalize the distribution (only needed if you want to work with the probabilities)
+            doc_topic_dist = doc_topic_dist_unnormalized/doc_topic_dist_unnormalized.sum(axis=1)
+            
+            #To find the top ranking topic you can do something like:
+            t = doc_topic_dist.argmax(axis=1)
+            for idx, topic in enumerate (t):
+                print idx, topic
         else:
             #Use NMF : able to use TF IDF
             tfidf_vectorizer = TfidfVectorizer(max_df=0.95, min_df=2, max_features=self.numfeatures, stop_words='english')
-            tfidf = tfidf_vectorizer.fit_transform(documents)
+            tfidf = tfidf_vectorizer.fit_transform(self.data)
             self.featurenames = tfidf_vectorizer.get_feature_names()
             
             #RUN
@@ -92,6 +104,7 @@ class Topics(object):
                 print " ".join([self.featurenames[i]
                             for i in topic.argsort()[:-self.numtopwords - 1:-1]])
                 
+                
         print "Total time taken : %s seconds" % (self.analysetime)
 
 
@@ -99,18 +112,21 @@ def str2bool(v):
   return v.lower() in ("yes", "true", "t", "1")
 
 if __name__ == "__main__":
-
-    print "Going to Load the News from Last 3 days"
-    news = News()
-    news.fetch()
-
-    print news
-
-
-    # Sample data
-    dataset = fetch_20newsgroups(shuffle=True, random_state=1, remove=('headers', 'footers', 'quotes'))
-    documents = dataset.data
     
+    useSample = False
+
+    if (useSample):
+        # Sample data
+        dataset = fetch_20newsgroups(shuffle=True, random_state=1, remove=('headers', 'footers', 'quotes'))
+        documents = dataset.data
+    else:
+        print "Going to Load the News from Last 3 days"
+        news = News()
+        news.fetch()
+        documents = news.titles
+
+        print news
+        
     useLDA = True
     numTopics = 20
     
@@ -119,8 +135,6 @@ if __name__ == "__main__":
         
         if (len(sys.argv) > 2): 
             useLDA = str2bool(sys.argv[2])
-    
-    documents = news.titles
     
     print "Going to analyse %s topics." % (numTopics)
     if (useLDA): 
