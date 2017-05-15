@@ -82,7 +82,7 @@ class Topic(object):
         print "--------------------------------"
         
         for a in self.articles:
-            print "\t %s" % a
+            print u"\t %s" % a
 
 
 class TopicModelling(object):
