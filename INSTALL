@@ -17,6 +17,10 @@ sudo pip install requests
 sudo pip install feedparser
 sudo pip install python-dateutil
 
+#For machine learning
+pip install -U numpy
+pip install -U scipy
+pip install -U scikit-learn
 
 #Initialize MySQL
 remove localhost binding from /etc/mysql/my.cnf
