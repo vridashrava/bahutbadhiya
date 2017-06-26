@@ -140,7 +140,7 @@ class TopicModelling(object):
             self.featurenames = tf_vectorizer.get_feature_names()
             
             #RUN
-            self.model = LatentDirichletAllocation(n_topics=self.numtopics, max_iter=5, learning_method='online', learning_offset=50.,random_state=0).fit(tf)
+            self.model = LatentDirichletAllocation(n_topics=self.numtopics, max_iter=50, learning_method='online', learning_offset=50.,random_state=0).fit(tf)
             
             # unnormalized doc-topic distribution
             self.doc_topic_dist_unnormalized = np.matrix(self.model.transform(tf))
