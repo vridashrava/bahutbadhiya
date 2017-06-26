@@ -82,7 +82,9 @@ class Topic(object):
         print "--------------------------------"
         
         for a in self.articles:
-            print u"\t %s" % a
+            p = "\t %s" %a
+            print p.encode('utf-8')
+            #print u"\t %s" % a
 
 
 class TopicModelling(object):
@@ -120,7 +122,10 @@ class TopicModelling(object):
             if (self.useTitles):
                 self.data.append(a.title)
             else:
-                self.data.append(a.description)
+                if (a.description is not None):
+                    self.data.append(a.description)
+                else:
+                    self.data.append(a.title)
         
 
     def analyse(self, isLDA = True, numTopics = 10):
@@ -221,7 +226,7 @@ if __name__ == "__main__":
     else:
         print "Using the Non-negative matrix factorization Model"
         
-    tm = TopicModelling(documents)
+    tm = TopicModelling(documents, False)
     tm.analyse(useLDA, numTopics)
     tm.documentToTopic()
     tm.display()
