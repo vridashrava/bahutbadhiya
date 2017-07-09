@@ -303,10 +303,10 @@ class Feed(object):
            
     def push_to_db(self, db):
         try:
-            SQL_BATCH = u"""INSERT IGNORE INTO articles (feedid, urlchecksum,url, title, description, pubdate, crawldate)
+            SQL_BATCH = """INSERT IGNORE INTO articles (feedid, urlchecksum,url, title, description, pubdate, crawldate)
                         VALUES (%s, %s, %s, %s, %s, %s, %s) """
 
-            values_list = [e.db_value(self.feedid) for e in self.entries]
+            values_list = [(e.db_value(self.feedid)).encode("utf-8") for e in self.entries]
             logging.info("Inserting %s articles for Feed %s" % (len(values_list), self.url))
             #logging.info(values_list)
             db.execute_batch(SQL_BATCH, values_list)
