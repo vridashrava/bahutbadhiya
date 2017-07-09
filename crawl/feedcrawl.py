@@ -192,7 +192,7 @@ class FeedStats (object):
     def write_to_db(self, db):
         try:
             nowtime = datetime.datetime.now()
-            nextime = nowtime + datetime.timedelta(hours=2)
+            nextime = nowtime + datetime.timedelta(minutes=30)
             SQL = """UPDATE feeds SET lastcrawl = \'%s\', 
                                       nextcrawl = \'%s\', 
                                       crawltime = %s,
