@@ -17,7 +17,7 @@ WORKER_POOL_SIZE = 10
 def init():
     #Configure basic loggign
     FORMAT = "[%(asctime)s: %(filename)s:%(lineno)s - %(funcName)20s() ] [%(levelname)s] %(message)s"
-    logging.basicConfig(filename='error.log',level=logging.DEBUG, format=FORMAT)
+    logging.basicConfig(filename='error.log',level=logging.ERROR, format=FORMAT)
 
 def crawl_feeds((url, urlchecksum, feedid, fetchfailures, parsefailures)):
     logging.info("Inside crawl_feed function for feed[%s] %s" % (feedid, url))
@@ -284,8 +284,14 @@ class Feed(object):
         self.status = False
         
         self.status = self.fetch()
-        if (self.status): self.status = self.parse()
+        if (self.status): 
+            self.status = self.parse()
+        else:
+            logging.error("Could not fetch feed: %s " % (self.url))
 
+        if (not self.status):
+            logging.error("Could not parse feed: %s " % (self.url))
+            
         logging.info(self.stats) 
 
         
