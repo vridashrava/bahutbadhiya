@@ -192,7 +192,7 @@ class FeedStats (object):
     def write_to_db(self, db):
         try:
             nowtime = datetime.datetime.now()
-            nextime = nowtime + datetime.timedelta(minutes=30)
+            nextime = nowtime + datetime.timedelta(minutes=1)
             SQL = """UPDATE feeds SET lastcrawl = \'%s\', 
                                       nextcrawl = \'%s\', 
                                       crawltime = %s,
@@ -306,7 +306,7 @@ class Feed(object):
             SQL_BATCH = """INSERT IGNORE INTO articles (feedid, urlchecksum,url, title, description, pubdate, crawldate)
                         VALUES (%s, %s, %s, %s, %s, %s, %s) """
 
-            values_list = [(e.db_value(self.feedid)).encode("utf-8") for e in self.entries]
+            values_list = [e.db_value(self.feedid) for e in self.entries]
             logging.info("Inserting %s articles for Feed %s" % (len(values_list), self.url))
             #logging.info(values_list)
             db.execute_batch(SQL_BATCH, values_list)
