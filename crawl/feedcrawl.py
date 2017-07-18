@@ -90,7 +90,9 @@ class FeedCrawler(object):
         if self.feeds is not None:
             self.timer.reset()
             logging.info( "Got %s feeds to crawl: " % (len(self.feeds)))
+            print "Got %s feeds to crawl: " % (len(self.feeds))
             logging.info("Creating a pool of %s workers" % WORKER_POOL_SIZE)
+            "Creating a pool of %s workers" % WORKER_POOL_SIZE
             p = Pool (WORKER_POOL_SIZE)
 
             crawled_stats = p.map(crawl_feeds, self.feeds)
