@@ -26,7 +26,7 @@ def crawl_feeds((url, urlchecksum, feedid, fetchfailures, parsefailures)):
     if (f.isHealthy()):
         f.push_to_db(db)
         f.update_db_stats(db)
-        print "."
+        #print "."
     else:
         logging.error("Problem fetching/parsing Feed [%s]: %s" % (feedid, url))
         f.update_db_stats(db)
@@ -140,9 +140,9 @@ class FeedEntry(object):
     #TODO datetimes have to be standardised to a fixed timezone
     
     def __init__(self, d):
-        self.title = d.title
+        self.title = d.title.encode('utf-8')
         self.url = d.link
-        self.description = d.description if (d.has_key('description')) else None
+        self.description = d.description.encode('utf-8') if (d.has_key('description')) else None
         #default pubdate to now (discovery time) if not present
         self.pubdate = parse(d.published).strftime('%Y-%m-%d %H:%M:%S') if (d.has_key('published')) else None
         self.crawldate = datetime.datetime.now()
@@ -151,7 +151,7 @@ class FeedEntry(object):
         return u'%s [%s, %s]\n%s\n%s' % (self.title, self.pubdate, self.crawldate, self.url, self.description)
     
     def db_value(self, feedid):
-        return (feedid, md5.new(self.url).hexdigest(), self.url, self.title.encode('utf-8'), self.description.encode('utf-8'), self.pubdate, self.crawldate)
+        return (feedid, md5.new(self.url).hexdigest(), self.url, self.title, self.description, self.pubdate, self.crawldate)
     
 class FeedStats (object):
     
