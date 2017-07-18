@@ -148,7 +148,7 @@ class FeedEntry(object):
         return u'%s [%s, %s]\n%s\n%s' % (self.title, self.pubdate, self.crawldate, self.url, self.description)
     
     def db_value(self, feedid):
-        return (feedid, md5.new(self.url).hexdigest(), self.url, self.title, self.description, self.pubdate, self.crawldate)
+        return (feedid, md5.new(self.url).hexdigest(), self.url, self.title.encode('utf-8'), self.description.encode('utf-8'), self.pubdate, self.crawldate)
     
 class FeedStats (object):
     
