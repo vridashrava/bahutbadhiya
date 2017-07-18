@@ -26,6 +26,7 @@ def crawl_feeds((url, urlchecksum, feedid, fetchfailures, parsefailures)):
     if (f.isHealthy()):
         f.push_to_db(db)
         f.update_db_stats(db)
+        print "."
     else:
         logging.error("Problem fetching/parsing Feed [%s]: %s" % (feedid, url))
         f.update_db_stats(db)
