@@ -65,7 +65,7 @@ class DB:
             logging.info("Reconnecting database")
             self.connect()
             self.cursor = self.conn.cursor()
-            self.cursor.executemany(sql, values_list)
+            self.cursor.execute(query)
         except Exception, Argument:
             logging.error(Argument)
             return None
