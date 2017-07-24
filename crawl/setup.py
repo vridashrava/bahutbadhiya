@@ -104,7 +104,7 @@ if __name__ == '__main__':
     db = DB()
     initialise_db(db)
 
-    feeds = read_feed_file(os.path.dirname(os.path.abspath(__file__)) + 'feeds.txt')
+    feeds = read_feed_file(os.path.dirname(os.path.abspath(__file__)) + '/feeds.txt')
     if feeds is not None:
     	status = insert_into_db(db, feeds)
 	if (status is False):
