@@ -23,17 +23,23 @@ pip install -U scipy
 pip install -U scikit-learn
 
 #Initialize MySQL
-remove localhost binding from /etc/mysql/my.cnf
+#remove localhost binding from /etc/mysql/my.cnf
 SET PASSWORD FOR 'root'@'localhost' = PASSWORD('pwd');
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
 FLUSH PRIVILEGES;
 
 CREATE USER 'bbadmin' IDENTIFIED BY 'modi is great';
-CREATE DATABASE bahutbadhiya;
+CREATE DATABASE bahutbadhiya CHARACTER SET utf8;
 GRANT ALL PRIVILEGES ON bahutbadhiya.* TO 'bbadmin'@'%';
 
 CREATE USER 'bbweb' IDENTIFIED BY 'modi is great';
 GRANT SELECT ON bahutbadhiya.* TO 'bbweb'@'%';
+
+#set the encoding to UTF-8
+alter table articles modify column title text CHARACTER SET utf8 COLLATE
+utf8_general_ci;
+alter table articles modify column description text CHARACTER SET utf8 COLLATE
+utf8_general_ci;
 
 
 #PHP

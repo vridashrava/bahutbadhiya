@@ -141,7 +141,7 @@ class FeedEntry(object):
     
     def __init__(self, d):
         self.title = d.title.encode('utf-8')
-        self.url = d.link
+        self.url = d.link.encode('utf-8')
         self.description = d.description.encode('utf-8') if (d.has_key('description')) else None
         #default pubdate to now (discovery time) if not present
         self.pubdate = parse(d.published).strftime('%Y-%m-%d %H:%M:%S') if (d.has_key('published')) else None
